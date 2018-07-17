@@ -10,10 +10,11 @@ int main()
 
     head = prepend(genBlock, head);
 
-    char hash = genBlock->hash;
-    char timestamp = genBlock->timestamp;
+    char buffer[32];
+    
+    strftime(buffer, 32, "_%Y_%m_%d_%H_%M", &genBlock->timestamp);
 
-    printf("added block: %s with timestamp %d \n", &hash, timestamp);
+    printf("added block: %s with timestamp %d \n", &hash, buffer);
 
     return 0;
 }

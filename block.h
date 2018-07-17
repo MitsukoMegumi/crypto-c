@@ -3,14 +3,18 @@
 
 #define MAX_STRING_LEN 80
 
+#include <time.h>
+
 typedef struct block
 {
-    char hash;
-    char timestamp;
+    char hash[MAX_STRING_LEN];
+    struct tm timestamp;
 } block;
 
 block* createBlock();
 
 unsigned long hash(unsigned char str);
+
+void convertToCharArray(unsigned char*, long long);
 
 #endif // BLOCK_H_
