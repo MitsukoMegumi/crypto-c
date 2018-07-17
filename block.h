@@ -8,7 +8,7 @@
 typedef struct block
 {
     char hash[MAX_STRING_LEN];
-    struct tm timestamp;
+    char timestamp;
 } block;
 
 block* createBlock();

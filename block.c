@@ -35,15 +35,15 @@ block* createBlock()
 
     block* cBlock = (block*)malloc(512);
 
-    cBlock->timestamp = *timeinfo;
-
     char buffer [32];
 
     strftime(buffer,32,"_%Y_%m_%d_%H_%M",timeinfo);
 
+    cBlock->timestamp = *buffer;
+
     char hashBuffer [80];
 
-    sprintf(hashBuffer, "Formatted data:  %d", hash(buffer));
+    sprintf(hashBuffer, "%d", hash(buffer));
     puts(hashBuffer);
     strncpy(cBlock->hash, hashBuffer, 80);
 
