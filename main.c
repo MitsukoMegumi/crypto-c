@@ -5,9 +5,10 @@
 int main() 
 {
     node* head = NULL;
+    node* tmp = NULL;
     block* genBlock = createBlock();
 
-    head = append(genBlock, head);
+    head = prepend(genBlock, head);
 
     return 0;
 }

@@ -1,8 +1,20 @@
 #include <string.h>
 #include <stdlib.h>
 #include <time.h>
-#include "sha256.h"
+#include <stdio.h>
 #include "block.h"
+
+
+unsigned long hash(unsigned char str)
+{
+    unsigned long hash = 5381;
+    int c;
+
+    while ((c = str++))
+        hash = ((hash << 5) + hash) + c; /* hash * 33 + c */
+
+    return hash;
+}
 
 block* createBlock()
 {
@@ -13,21 +25,11 @@ block* createBlock()
     
     char timestamp = *asctime(timeinfo);
 
-    block* cBlock = (block*)malloc(sizeof(block));
+    block* cBlock = (block*)malloc(512);
 
-    char hash[SHA256_BLOCK_SIZE];
+    unsigned char uchar = (unsigned char) timestamp;
 
-    char buf[SHA256_BLOCK_SIZE];
-	SHA256_CTX ctx;
-	int idx;
-	int pass = 1;
-
-	sha256_init(&ctx);
-	sha256_update(&ctx, (const unsigned char*) (size_t)timestamp, strlen((const char*) (size_t)timestamp));
-	sha256_final(&ctx, (unsigned char *)buf);
-	pass = pass && !memcmp(hash, buf, SHA256_BLOCK_SIZE);
-
-    cBlock->hash[0] = *hash;
+    cBlock->hash = (char)hash(uchar);
     cBlock->timestamp = timestamp;
 
     return cBlock;

@@ -5,10 +5,12 @@
 
 typedef struct block
 {
-    char hash[MAX_STRING_LEN];
+    char hash;
     char timestamp;
 } block;
 
 block* createBlock();
 
-#endif // CHAIN_H_
+unsigned long hash(unsigned char str);
+
+#endif // BLOCK_H_
