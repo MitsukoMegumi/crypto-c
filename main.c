@@ -11,8 +11,9 @@ int main()
     head = prepend(genBlock, head);
 
     char hash = genBlock->hash;
+    char timestamp = genBlock->timestamp;
 
-    printf("added block: %s", &hash);
+    printf("added block: %s with timestamp %d \n", &hash, timestamp);
 
     return 0;
 }
