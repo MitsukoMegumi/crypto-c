@@ -10,5 +10,9 @@ int main()
 
     head = prepend(genBlock, head);
 
+    char hash = genBlock->hash;
+
+    printf("added block: %s", &hash);
+
     return 0;
 }
