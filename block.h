@@ -9,4 +9,6 @@ typedef struct block
     char timestamp;
 } block;
 
+block* createBlock();
+
 #endif // CHAIN_H_
