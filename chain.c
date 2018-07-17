@@ -1,14 +1,9 @@
 #include <stdlib.h>
 #include <stdio.h>
-#include "block.c"
+#include "chain.h"
+#include "block.h"
 
-typedef struct node 
-{
-    block nodeBlock;
-    struct node* next;
-} node;
-
-node* create(block dat, node* next)
+node *create(block* dat, node* next)
 {
     node* new_node = (node*)malloc(sizeof(node));
     if(new_node == NULL)
@@ -16,13 +11,13 @@ node* create(block dat, node* next)
         printf("Error creating a new node.\n");
         exit(0);
     }
-    new_node->nodeBlock = dat;
+    new_node->nodeBlock = *dat;
     new_node->next = next;
  
     return new_node;
 }
 
-node* prepend(block dat, node* head)
+node *prepend(block* dat, node* head)
 {
     node* new_node = create(dat, head);
     head = new_node;
@@ -41,7 +36,7 @@ int count(node *head)
     return c;
 }
 
-node* append(block dat, node* head)
+node *append(block* dat, node* head)
 {
     /* go to the last node */
     node *cursor = head;

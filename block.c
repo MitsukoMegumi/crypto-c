@@ -2,14 +2,7 @@
 #include <stdlib.h>
 #include <time.h>
 #include "sha256.h"
-
-#define MAX_STRING_LEN 80
-
-typedef struct block
-{
-    char hash[MAX_STRING_LEN];
-    char timestamp;
-} block;
+#include "block.h"
 
 block* createBlock()
 {
